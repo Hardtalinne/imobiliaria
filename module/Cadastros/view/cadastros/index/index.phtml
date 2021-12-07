@@ -5,13 +5,18 @@
 ?>
 <h1>Cadastros</h1>
 <ul>
-<li><a href="<?=$this->url('cadastros',[
-    'controller' => 'corretor'
-])?>">Cadastro de Corretores</a></li>
+    <li><a href="<?= $this->url('cadastros', [
+            'controller' => 'corretor'
+        ]) ?>">Cadastro de Corretores</a></li>
+</ul>
+<ul>
+    <li><a href="<?= $this->url('cadastros', [
+            'controller' => 'imovel'
+        ]) ?>">Cadastro de Imovéis</a></li>
 </ul>
 <p>
-<a href="<?=$this->url('application',[
-    'controller' => 'index',
-    'action' => 'logout'
-])?>">Sair</a>
+    <a href="<?= $this->url('application', [
+        'controller' => 'index',
+        'action' => 'logout'
+    ]) ?>">Sair</a>
 </p>

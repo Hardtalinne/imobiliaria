@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7.4-apache
 
 LABEL maintainer="getlaminas.org" \
     org.label-schema.docker.dockerfile="/Dockerfile" \
@@ -32,7 +32,7 @@ RUN apt-get install --yes libicu-dev \
     && docker-php-ext-install intl
 
 ###
-## Optional PHP extensions 
+## Optional PHP extensions
 ###
 
 ## mbstring for i18n string support
@@ -43,7 +43,7 @@ RUN apt-get install --yes libicu-dev \
 ###
 
 ## MySQL PDO support
-# RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql
 
 ## PostgreSQL PDO support
 # RUN apt-get install --yes libpq-dev \
@@ -66,7 +66,7 @@ RUN apt-get install --yes libicu-dev \
 # RUN pecl install mongodb \
 #     && docker-php-ext-enable mongodb
 
-## Redis support.  igbinary and libzstd-dev are only needed based on 
+## Redis support.  igbinary and libzstd-dev are only needed based on
 ## redis pecl options
 # RUN pecl install igbinary \
 #     && docker-php-ext-enable igbinary \

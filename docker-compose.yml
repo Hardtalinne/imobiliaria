@@ -1,7 +1,32 @@
-laminas:
-  build: .
-  dockerfile: Dockerfile
-  ports:
-   - "8080:80"
-  volumes:
-   - .:/var/www
+version: "3"
+services:
+  laminas:
+    container_name: imobiliaria
+    build:
+      context: .
+    ports:
+      - "8081:80"
+    volumes:
+      - .:/var/www
+  db:
+    container_name: mysql
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/www/mysql
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: imobiliaria
+  adminer:
+    container_name: adminer
+    image: adminer
+    depends_on:
+      - db
+    ports:
+      - "8082:8080"
+volumes:
+  mysql_data:

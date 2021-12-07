@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cadastros;
 
-use Laminas\Router\Http\Literal;
+use Cadastros\Controller\ImovelControllerFactory;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 use Cadastros\Controller\CorretorControllerFactory;
@@ -13,12 +13,12 @@ return [
     'router' => [
         'routes' => [
             'cadastros' => [
-                'type'    => Segment::class,
+                'type' => Segment::class,
                 'options' => [
-                    'route'    => '/cadastros[/:controller[/:action[/:matricula]]]',
+                    'route' => '/cadastros[/:controller[/:action[/:matricula]]]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
+                        'action' => 'index',
                     ],
                 ],
             ],
@@ -26,23 +26,27 @@ return [
     ],
     'controllers' => [
         'aliases' => [
-            'corretor' => Controller\CorretorController::class
+            'corretor' => Controller\CorretorController::class,
+            'imovel' => Controller\ImovelController::class
         ],
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
             Controller\CorretorController::class => CorretorControllerFactory::class,
+            Controller\ImovelController::class => ImovelControllerFactory::class,
+
         ],
     ],
     'view_manager' => [
         'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
+        'display_exceptions' => true,
+        'doctype' => 'HTML5',
+        'not_found_template' => 'error/404',
+        'exception_template' => 'error/index',
         'template_map' => [
-            'cadastros/corretor/index'      => __DIR__ . '/../view/cadastros/corretor/index.phtml',
-            'error/404'                     => __DIR__ . '/../view/error/404.phtml',
-            'error/index'                   => __DIR__ . '/../view/error/index.phtml',
+            'cadastros/corretor/index' => __DIR__ . '/../view/cadastros/corretor/index.phtml',
+            'cadastros/imovel/index' => __DIR__ . '/../view/cadastros/imovel/index.phtml',
+            'error/404' => __DIR__ . '/../view/error/404.phtml',
+            'error/index' => __DIR__ . '/../view/error/index.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',
@@ -50,7 +54,8 @@ return [
     ],
     'service_manager' => [
         'factories' => [
-            'CorretorTable' => Model\CorretorTableFactory::class
+            'CorretorTable' => Model\CorretorTableFactory::class,
+            'ImovelTable' => Model\ImovelTableFactory::class
         ]
     ]
 ];

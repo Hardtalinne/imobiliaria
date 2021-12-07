@@ -7,12 +7,14 @@
     <h1 class="display-4">Acesso ao Sistema</h1>
 
     <p>
-        <form action="<?=$this->url('application',[
-            'action' => 'login'
-        ])?>" method="post">
-        Usuário: <input type="text" name="usuario" autofocus="autofocus"/><br/>
-        Senha: <input type="password" name="senha"/><br/>
-        <input type="submit" value="entrar"/>
-        </form>
+    <form action="<?= $this->url('application', [
+        'action' => 'login'
+    ]) ?>" method="post">
+        <div style="display:inline-grid">
+            Usuário: <input type="text" name="usuario" autofocus="autofocus"/><br/>
+            Senha: <input type="password" name="senha"/><br/>
+            <input type="submit" value="entrar"/>
+        </div>
+    </form>
     </p>
 </div>

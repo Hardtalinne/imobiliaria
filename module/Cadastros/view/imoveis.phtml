@@ -1,0 +1,27 @@
+<?php
+
+use Laminas\View\View;
+
+/**
+ * @var $this View
+ */
+?>
+<tr>
+    <td>
+        <a href="<?= $this->url('cadastros', [
+            'controller' => 'imovel',
+            'action' => 'editar',
+            'matricula' => $this->codigo
+        ]) ?>"><?= $this->codigo ?>
+        </a>
+    </td>
+
+    <td><?= $this->nome ?></td>
+    <td><?= $this->localizacao ?></td>
+
+    <td><a href="<?= $this->url('cadastros', [
+            'controller' => 'imovel',
+            'action' => 'apagar',
+            'matricula' => $this->codigo
+        ]) ?>">X</a></td>
+</tr>

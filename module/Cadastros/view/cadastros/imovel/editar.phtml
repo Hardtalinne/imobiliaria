@@ -1,0 +1,46 @@
+<?php
+
+use Laminas\View\View;
+
+/**
+ * @var $this View
+ */
+?>
+<h1>Incluir Imovel</h1>
+<form method="post" action="<?= $this->url('cadastros', [
+    'controller' => 'imovel',
+    'action' => 'gravar'
+]) ?>">
+    <div style="display:inline-grid">
+        Nome:
+        <input type="text"
+               name="nome"
+               autofocus="autofocus"
+               value="<?= $this->imovel->nome ?>"
+        >
+        <input type="hidden"
+               name="codigo"
+               value="<?= $this->imovel->codigo ?>"
+        >
+        Localização:
+        <input type="text"
+               name="localizacao"
+               autofocus="autofocus"
+               value="<?= $this->imovel->localizacao ?>"
+        >
+        Corretor:
+        <select name="codigo_corretor">
+            <? foreach ($this->corretores as $corretor) { ?>
+                <option value="<?= $corretor->matricula ?>"><?= $corretor->nome ?></option>
+            <? } ?>
+        </select>
+    </div>
+    <div style="margin-top: 10px; margin-left: 128px">
+        <input type="submit" value="gravar">
+    </div>
+</form>
+<span><?= $this->messages ?></span>
+
+<a href="<?= $this->url('cadastros', [
+    'controller' => 'imovel'
+]) ?>">Voltar</a>

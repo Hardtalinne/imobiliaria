@@ -30,6 +30,7 @@ class IndexController extends AbstractActionController
         if ($usuario->autenticado($this->dbAdapter)){
             return $this->redirect()->toRoute('cadastros');
         }
+
         return $this->redirect()->toRoute('home');
     }
     
